@@ -14,6 +14,7 @@ using Unity.Services.Lobbies.Models;
 using Unity.Services.Relay;
 using UnityEngine;
 
+
 public class ServerHelper : MonoBehaviour
 {
     //https://www.youtube.com/watch?v=fdkvm21Y0xE&ab_channel=Tarodev
@@ -30,6 +31,16 @@ public class ServerHelper : MonoBehaviour
     private async void Awake()
     {
         _transport = GetComponent<UnityTransport>();
+
+#if UNITY_EDITOR
+        //in unity editor, add latency
+        _transport.SetDebugSimulatorParameters(
+            80, //ms ping
+             5,// jitter
+              1 //packet drop rate
+            );
+#endif
+
         await Authenticate();
     }
 
@@ -116,7 +127,7 @@ public class ServerHelper : MonoBehaviour
         {
             var lobby = await Lobbies.Instance.QuickJoinLobbyAsync();
 
-            Debug.Log("lobby id (not) found: "+ lobby?.Id);
+            Debug.Log("lobby id (not) found: " + lobby?.Id);
             Debug.Log("lobby JoinCodeKey: " + lobby.Data[JoinCodeKey]?.Value);
 
             var a = await RelayService.Instance.JoinAllocationAsync(lobby.Data[JoinCodeKey].Value);
