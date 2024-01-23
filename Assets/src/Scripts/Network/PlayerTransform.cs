@@ -1,6 +1,9 @@
 using UnityEngine;
 using Unity.Netcode;
 
+/// <summary>
+/// Handles syncing and transmitting player movement (client side)
+/// </summary>
 public class PlayerTransform : NetworkBehaviour
 {
     public float lerpSpeed = 10f;
@@ -31,18 +34,32 @@ public class PlayerTransform : NetworkBehaviour
     {
         if (IsOwner)
         {
-            // If this is the owner, update the NetworkVariable with the current transform
-            networkTransform.Value = new TransformData
-            {
-                Position = transform.position,
-                RotationY = transform.rotation.eulerAngles.y
-            };
+            TransmitNetworkTransform();
+            return;
         }
         else
         {
-            // If this is not the owner, interpolate the transform with the NetworkVariable
-            transform.position = Vector3.Lerp(transform.position, networkTransform.Value.Position, Time.deltaTime * lerpSpeed);
-            transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(0, networkTransform.Value.RotationY, 0), Time.deltaTime * lerpSpeed);
+            SyncPositionFromServerNetworkTransform();
+            return;
         }
     }
+
+    private void SyncPositionFromServerNetworkTransform()
+    {
+        // If this is not the owner, interpolate the transform with the NetworkVariable
+        transform.position = Vector3.Lerp(transform.position, networkTransform.Value.Position, Time.deltaTime * lerpSpeed);
+        transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(0, networkTransform.Value.RotationY, 0), Time.deltaTime * lerpSpeed);
+    }
+
+    private void TransmitNetworkTransform()
+    {
+        var newNetworkState = new TransformData
+        {
+            Position = transform.position,
+            RotationY = transform.rotation.eulerAngles.y
+        };
+
+        networkTransform.Value = newNetworkState;
+    }
+
 }

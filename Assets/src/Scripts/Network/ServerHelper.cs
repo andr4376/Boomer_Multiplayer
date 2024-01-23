@@ -35,9 +35,9 @@ public class ServerHelper : MonoBehaviour
 #if UNITY_EDITOR
         //in unity editor, add latency
         _transport.SetDebugSimulatorParameters(
-            80, //ms ping
+            130, //ms ping
              5,// jitter
-              1 //packet drop rate
+              3 //packet drop rate
             );
 #endif
 
