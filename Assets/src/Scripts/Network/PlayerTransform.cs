@@ -12,7 +12,7 @@ public class PlayerTransform : NetworkBehaviour
     public struct TransformData : INetworkSerializable
     {
         public Vector3 Position;
-        public float RotationY;
+        public short RotationY;
 
         public void NetworkSerialize<T>(BufferSerializer<T> serializer) where T : IReaderWriter
         {
@@ -56,7 +56,7 @@ public class PlayerTransform : NetworkBehaviour
         var newNetworkState = new TransformData
         {
             Position = transform.position,
-            RotationY = transform.rotation.eulerAngles.y
+            RotationY = (short)transform.rotation.eulerAngles.y
         };
 
         networkTransform.Value = newNetworkState;
