@@ -1,3 +1,4 @@
+#define SIMULATE_LAG
 using System;
 using System.Collections;
 using System.Linq;
@@ -25,19 +26,21 @@ public class ServerHelper : MonoBehaviour
 
     private Lobby _connectedLobby;
 
-    private const int maxPlayers = 10;
+    private const int maxPlayers = 4;
 
     private async void Awake()
     {
         _transport = GetComponent<UnityTransport>();
 
 #if UNITY_EDITOR
+#if SIMULATE_LAG
         //in unity editor, add latency
         _transport.SetDebugSimulatorParameters(
-            130, //ms ping
-             5,// jitter
-              3 //packet drop rate
+            50, //ms ping
+             0,// jitter
+              0 //packet drop rate
             );
+#endif
 #endif
 
         await Authenticate();
@@ -49,6 +52,7 @@ public class ServerHelper : MonoBehaviour
 
         _connectedLobby = await QuickJoinLobby() ?? await CreateLobby();
         //disable btn?
+
     }
 
     private async Task<Lobby> CreateLobby()
@@ -125,7 +129,7 @@ public class ServerHelper : MonoBehaviour
             await AuthenticationService.Instance.SignInAnonymouslyAsync();
 
         _playerId = AuthenticationService.Instance.PlayerId;
-        Debug.Log("playerid:"+_playerId);
+        Debug.Log("playerid:" + _playerId);
     }
 
 

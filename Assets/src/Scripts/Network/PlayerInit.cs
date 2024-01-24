@@ -5,22 +5,20 @@ public class PlayerInit : NetworkBehaviour
 {
     public GameObject playerGraphics;
 
-    public MonoBehaviour[] scriptsToDisableifNotOwner;
+    public MonoBehaviour[] scriptsToEnableifOwner;
     public override void OnNetworkSpawn()
     {
-
         if (IsOwner == false) //not my player
         {
-            foreach (var item in scriptsToDisableifNotOwner)
-            {
-                item.enabled = false;
-            }
+            return;
         }
-        else //my player
+        foreach (var item in scriptsToEnableifOwner)
         {
-            playerGraphics.SetActive(false);
+            item.enabled = true;
         }
+        //playerGraphics.SetActive(false);
 
+        GetComponent<CharacterController>().enabled = true;
     }
 
     public override void OnNetworkDespawn()
