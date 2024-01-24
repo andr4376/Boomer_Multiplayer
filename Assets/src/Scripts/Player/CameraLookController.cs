@@ -25,7 +25,6 @@ public class CameraLookController : MonoBehaviour
         transform.localRotation = Quaternion.Euler(xRotation, 0, 0);
 
         PlayerBody.Rotate(Vector3.up * input.x);
-
     }
 
     private void OnDestroy()
