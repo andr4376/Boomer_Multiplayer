@@ -55,6 +55,8 @@ public class ServerHelper : MonoBehaviour
     {
         try
         {
+            Debug.Log("Attempting to create new lobby");
+
             var a = await RelayService.Instance.CreateAllocationAsync(maxPlayers);
 
             var joinCode = await RelayService.Instance.GetJoinCodeAsync(a.AllocationId);
@@ -143,11 +145,9 @@ public class ServerHelper : MonoBehaviour
             NetworkManager.Singleton.StartClient();
             return lobby;
         }
-        catch (LobbyServiceException e)
+        catch (LobbyServiceException e) when (e.ApiError.Status == 404)
         {
-            Debug.Log("could not join lobby");
-
-            Debug.LogException(e);
+            Debug.Log("No active lobbies.");
             return null;
         }
     }
