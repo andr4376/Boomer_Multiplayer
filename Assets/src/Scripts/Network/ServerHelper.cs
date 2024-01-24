@@ -1,10 +1,9 @@
-#if UNITY_EDITOR
-using ParrelSync;
-#endif
 using System;
 using System.Collections;
+using System.Linq;
 using System.Threading.Tasks;
 using TMPro;
+using Unity.Multiplayer.Playmode;
 using Unity.Netcode;
 using Unity.Netcode.Transports.UTP;
 using Unity.Services.Authentication;
@@ -83,6 +82,8 @@ public class ServerHelper : MonoBehaviour
 
             NetworkManager.Singleton.StartHost();
 
+            Debug.Log("lobby created with id" + lobby.Id);
+
             return lobby;
         }
         catch (LobbyServiceException e)
@@ -110,14 +111,14 @@ public class ServerHelper : MonoBehaviour
     {
         var options = new InitializationOptions();
 #if UNITY_EDITOR
-        options.SetProfile(ClonesManager.IsClone() ? ClonesManager.GetArgument() : "Primary");
+        Debug.Log("first tag:" + CurrentPlayer.ReadOnlyTags().First());
+        options.SetProfile(CurrentPlayer.ReadOnlyTags().First());
 #endif
         await UnityServices.InitializeAsync(options);
-
         if (AuthenticationService.Instance.IsSignedIn == false)
             await AuthenticationService.Instance.SignInAnonymouslyAsync();
-
         _playerId = AuthenticationService.Instance.PlayerId;
+        Debug.Log("playerid:"+_playerId);
     }
 
 
