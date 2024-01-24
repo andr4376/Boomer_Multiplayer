@@ -112,13 +112,18 @@ public class ServerHelper : MonoBehaviour
     private async Task Authenticate()
     {
         var options = new InitializationOptions();
+
 #if UNITY_EDITOR
+        //I'm using multiple instances on the same machine, therefor we use unique profiles
         Debug.Log("first tag:" + CurrentPlayer.ReadOnlyTags().First());
         options.SetProfile(CurrentPlayer.ReadOnlyTags().First());
 #endif
+
         await UnityServices.InitializeAsync(options);
+
         if (AuthenticationService.Instance.IsSignedIn == false)
             await AuthenticationService.Instance.SignInAnonymouslyAsync();
+
         _playerId = AuthenticationService.Instance.PlayerId;
         Debug.Log("playerid:"+_playerId);
     }
