@@ -18,6 +18,15 @@ public class PlayerInit : NetworkBehaviour
         }
         //playerGraphics.SetActive(false);
 
+        foreach (var item in playerGraphics.GetComponentsInChildren<MeshRenderer>())
+        {
+            item.enabled=false;
+        }
+        foreach (var item in playerGraphics.GetComponentsInChildren<SkinnedMeshRenderer>())
+        {
+            item.enabled = false;
+        }
+
         GetComponent<CharacterController>().enabled = true;
     }
 
