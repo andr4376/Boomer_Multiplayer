@@ -8,7 +8,8 @@ ps1 aesthetic
 traps
 boomer shooter meets dark souls
 
-1) movement and generel netcode 
+1) movement and generel netcode done
+2) animation done
 
 
 sources
