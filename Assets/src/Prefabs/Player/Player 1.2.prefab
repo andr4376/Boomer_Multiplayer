@@ -169,7 +169,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 2850406061
+  GlobalObjectIdHash: 1631874018
   InScenePlacedSourceGlobalObjectIdHash: 1461435791
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
@@ -308,6 +308,7 @@ GameObject:
   - component: {fileID: 8430759706739551920}
   - component: {fileID: 8864907675703265110}
   - component: {fileID: 7134567811846158522}
+  - component: {fileID: 6302551493293954467}
   m_Layer: 0
   m_Name: Camera
   m_TagString: MainCamera
@@ -340,7 +341,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0.023529412, g: 0.1254902, b: 0.28235295, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -416,6 +417,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e164a4c8381c70419f908a0a16c34f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6302551493293954467
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2004268654462551047}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 774c0f792f504cb4c8e53503cdd242c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pixelationMaterial: {fileID: 0}
+  resolutionPercentage: 0.2
 --- !u!1001 &3053121616573601871
 PrefabInstance:
   m_ObjectHideFlags: 0
