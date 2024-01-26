@@ -6,6 +6,7 @@ public class FireBallShooter : NetworkBehaviour
     public PlayerInputListener PlayerInputListener;
     public GameObject FireballProjectilePrefab;
 
+
     private float _lastshootTs = 0;
     public float firerate = 2;
 
@@ -18,16 +19,15 @@ public class FireBallShooter : NetworkBehaviour
     {
         if (Time.time >= _lastshootTs + firerate)
         {
-            ShootFireBallServerRpc(transform.position,transform.rotation);
+            ShootFireBallServerRpc(transform.position, transform.rotation);
             SpawnFireBall(transform.position, transform.rotation);
-
+            _lastshootTs = Time.time;
         }
-        _lastshootTs = Time.time;
     }
     [ServerRpc]
     private void ShootFireBallServerRpc(Vector3 position, Quaternion rotation)
     {
-        ShootFireBallClientRpc(position,rotation);
+        ShootFireBallClientRpc(position, rotation);
     }
 
     [ClientRpc]
@@ -41,6 +41,6 @@ public class FireBallShooter : NetworkBehaviour
 
     private void SpawnFireBall(Vector3 position, Quaternion rotation)
     {
-        Instantiate(FireballProjectilePrefab, position, rotation);
+        var fireball = Instantiate(FireballProjectilePrefab, position, rotation);
     }
 }

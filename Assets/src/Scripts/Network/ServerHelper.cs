@@ -36,9 +36,9 @@ public class ServerHelper : MonoBehaviour
 #if SIMULATE_LAG
         //in unity editor, add latency
         _transport.SetDebugSimulatorParameters(
-            500, //ms ping
-             10,// jitter
-              5 //packet drop rate
+            50, //ms ping
+             1,// jitter
+              1 //packet drop rate
             );
 #endif
 #endif
