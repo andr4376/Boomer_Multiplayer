@@ -1,4 +1,5 @@
 using System;
+using Unity.Burst.CompilerServices;
 using UnityEngine;
 using UnityEngine.Windows;
 
@@ -29,6 +30,31 @@ public sealed partial class PlayerMovementController : MonoBehaviour
         }
     }
 
+    Vector3 slopeNormal;
+    private bool isOnSlopeCache = false;
+    public bool IsOnSlope
+    {
+        get
+        {
+            RaycastHit hit;
+            if (Physics.Raycast(transform.position, Vector3.down, out hit, 1))
+            {
+                // Get the angle of the slope
+                float slopeAngle = Vector3.Angle(hit.normal, Vector3.up);
+
+                // If the slope angle is greater than 45 degrees, apply sliding effect
+                if (slopeAngle >= characterController.slopeLimit)
+                {
+                    slopeNormal = hit.normal;
+                    isOnSlopeCache = true;
+                    return isOnSlopeCache;
+                }
+            }
+            isOnSlopeCache = false;
+            return isOnSlopeCache;
+        }
+    }
+    public float slopeFallingSpeed;
     public float Speed = 12f;
     public float CrouchSpeedFactor = 0.5f;
     public float SprintSpeedFactor = 2;
@@ -49,12 +75,25 @@ public sealed partial class PlayerMovementController : MonoBehaviour
     void Update()
     {
         Applygravity();
-        //Apply speedfactor to movement only (not jump)
-        Vector3 mov = new Vector3(movement.x, 0, movement.z) * (Speed * currentSpeedFactor);
+        ApplySlidingIfOnSlope();
+
+        Vector3 mov;
+        // Apply speed factor to movement only (not jump)
+        mov = new Vector3(movement.x, 0, movement.z) * (Speed * currentSpeedFactor);
         mov.y = movement.y;
-        characterController.Move(mov * Time.deltaTime);
+        characterController.Move(Time.deltaTime * mov);
         movement.x = 0;
         movement.z = 0;
+    }
+
+    private void ApplySlidingIfOnSlope()
+    {
+        //slide down
+        if (IsOnSlope)
+        {
+            Vector3 slideDirection = Vector3.down + slopeNormal;
+            characterController.Move(slopeFallingSpeed * Time.deltaTime * slideDirection);
+        }
     }
 
     void UpdateMovement(Vector2 input)
@@ -117,7 +156,7 @@ public partial class PlayerMovementController
     const float gravity = -25f;
     private void OnJump()
     {
-        if (characterController.isGrounded)
+        if (characterController.isGrounded && isOnSlopeCache == false)
         {
             movement.y = MathF.Sqrt(JumpForce * -2 * gravity);
         }
