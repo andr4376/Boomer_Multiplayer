@@ -8,6 +8,10 @@ public class FireBallScript : MonoBehaviour
 
     private bool hit;
 
+    [HideInInspector]
+    public AudioSource AudioSource;
+    public AudioClip AudioClip;
+
     private void Awake()
     {
         t = transform;
@@ -26,5 +30,6 @@ public class FireBallScript : MonoBehaviour
             return;
         hit = true;
         Destroy(this.gameObject,2);   
+        AudioSource.PlayOneShot(AudioClip);
     }
 }

@@ -6,6 +6,8 @@ public class FireBallShooter : NetworkBehaviour
     public PlayerInputListener PlayerInputListener;
     public GameObject FireballProjectilePrefab;
 
+    public AudioSource AudioSource;
+    public AudioClip AudioClip;
 
     private float _lastshootTs = 0;
     public float firerate = 2;
@@ -42,5 +44,7 @@ public class FireBallShooter : NetworkBehaviour
     private void SpawnFireBall(Vector3 position, Quaternion rotation)
     {
         var fireball = Instantiate(FireballProjectilePrefab, position, rotation);
+        fireball.GetComponent<FireBallScript>().AudioSource = this.AudioSource;
+        AudioSource.PlayOneShot(AudioClip);
     }
 }

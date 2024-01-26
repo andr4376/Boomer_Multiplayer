@@ -209,8 +209,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 10
-  audioSource: {fileID: 0}
-  clip: {fileID: 8300000, guid: 0d911fb10d921e442a8cd1e7e44728db, type: 3}
+  AudioSource: {fileID: 0}
+  AudioClip: {fileID: 8300000, guid: 8be3fba09abb77c47a9be8962e254114, type: 3}
 --- !u!54 &6284588622379184239
 Rigidbody:
   m_ObjectHideFlags: 0
