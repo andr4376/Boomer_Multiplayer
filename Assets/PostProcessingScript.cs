@@ -11,14 +11,8 @@ public class PostProcessingScript : MonoBehaviour
     public float resolutionPercentage;
 
 
-    private void OnEnable()
+    private void Awake()
     {
-        if (pixelationMaterial == null)
-        {
-            pixelationMaterial = new Material(Shader.Find("PostProcessing/PixelationShader"));
-
-        }
-
         x = Screen.width * resolutionPercentage;
         y = Screen.height * resolutionPercentage;
 
@@ -43,12 +37,6 @@ public class PostProcessingScript : MonoBehaviour
 
     private void OnRenderImage(RenderTexture source, RenderTexture destination)
     {
-        if (pixelationMaterial == null)
-        {
-            return;
-        }
-
         Graphics.Blit(source, destination, pixelationMaterial);
-
     }
 }
