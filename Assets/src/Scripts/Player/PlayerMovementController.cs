@@ -53,7 +53,6 @@ public sealed partial class PlayerMovementController : MonoBehaviour
         Vector3 mov = new Vector3(movement.x, 0, movement.z) * (Speed * currentSpeedFactor);
         mov.y = movement.y;
         characterController.Move(mov * Time.deltaTime);
-
         movement.x = 0;
         movement.z = 0;
     }
@@ -115,7 +114,7 @@ public sealed partial class PlayerMovementController : MonoBehaviour
 public partial class PlayerMovementController
 {
     public float JumpForce = 50;
-    const float gravity = -18f;
+    const float gravity = -25f;
     private void OnJump()
     {
         if (characterController.isGrounded)

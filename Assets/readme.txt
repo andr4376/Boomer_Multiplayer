@@ -7,6 +7,12 @@ dungeon crawler
 ps1 aesthetic
 traps
 boomer shooter meets dark souls
+multiplayer
+
+slide down slopes
+medievil chievalry combat
+quickjoin like agario
+
 
 1) movement and generel netcode done
 2) animation done

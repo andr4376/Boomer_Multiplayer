@@ -1,41 +1,32 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Animator))]
 public class PlayerAnimationManager : MonoBehaviour
 {
     public Animator animator;
-    public PlayerInputListener playerInputListener;
+    public CharacterController characterController;
 
     const string IDLE = "PlayerIdle";
     const string RUN = "PlayerRun";
-
-
-    private void Start()
-    {
-        playerInputListener.OnMoveInput += PlayRunAnimation;
-    }
+    const string JUMP = "PlayerJump";
 
     private void FixedUpdate()
     {
-        if (Input.GetAxisRaw(Constants.HORISONTAL_MOVEMENT_KW) != 0)
+        if (characterController.isGrounded == false)
+        {
+            //jump
+            PlayAnimation(JUMP);
             return;
-        if (Input.GetAxisRaw(Constants.VERTICAL_MOVEMENT_KW) != 0)
+        }
+        if (characterController.velocity.magnitude > 0.5)
+        {
+            PlayAnimation(RUN);
             return;
+        }
 
         PlayAnimation(IDLE);
     }
-    private void PlayRunAnimation(Vector2 input)
-    {
-        PlayAnimation(RUN);
-    }
 
-    private void OnDestroy()
-    {
-        playerInputListener.OnMoveInput -= PlayRunAnimation;
-    }
     string currentAnimation = IDLE;
     void PlayAnimation(string animName)
     {
