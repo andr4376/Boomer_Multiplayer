@@ -187,7 +187,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 3368591100
+  GlobalObjectIdHash: 1346460823
   InScenePlacedSourceGlobalObjectIdHash: 2382068322
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
@@ -350,6 +350,7 @@ GameObject:
   - component: {fileID: 8430759706739551920}
   - component: {fileID: 7134567811846158522}
   - component: {fileID: 2080665508433784575}
+  - component: {fileID: 1956426813960601877}
   m_Layer: 0
   m_Name: Camera
   m_TagString: MainCamera
@@ -450,13 +451,36 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2004268654462551047}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 774c0f792f504cb4c8e53503cdd242c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   pixelationMaterial: {fileID: 2100000, guid: 81418fdab9f344345a7c45ca191d9aaa, type: 2}
   resolutionPercentage: 0.25
+--- !u!114 &1956426813960601877
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2004268654462551047}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 433faa8b758afed4f9295b193c697276, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _PixelationFactor: 1
+  _ColorEmulationMode: 3
+  _FullscreenColorDepth: {x: 256, y: 256, z: 256}
+  _FullscreenDitherDepth: {x: 32, y: 32, z: 32}
+  _DitheringMatrixSize: 2
+  _DitheringScale: 1
+  _InterlacingSize: 1
+  _PostProcessShader: {fileID: 4800000, guid: 56d52fd5b7c6911468179e5a7359ce0e, type: 3}
+  _PostProcessShaderAccurate: {fileID: 4800000, guid: 2ebed186567d3c244a87538744a62920, type: 3}
+  _PixelationShader: {fileID: 4800000, guid: f2da0e2a14a532548b5db043244b3df1, type: 3}
+  _InterlacingShader: {fileID: 4800000, guid: 03ebd34214b41ef459d7ee6753b062be, type: 3}
 --- !u!1 &7530050266691075844
 GameObject:
   m_ObjectHideFlags: 0
