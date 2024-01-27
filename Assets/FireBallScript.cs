@@ -12,6 +12,8 @@ public class FireBallScript : MonoBehaviour
     public AudioSource AudioSource;
     public AudioClip AudioClip;
 
+    public FireBallShooter Shooter;
+
     private void Awake()
     {
         t = transform;
@@ -28,6 +30,10 @@ public class FireBallScript : MonoBehaviour
     {
         if (hit)
             return;
+
+        if (other.tag == "Player" && other.GetComponentInChildren<FireBallShooter>() == Shooter)
+            return;
+
         hit = true;
         Destroy(this.gameObject,2);   
         AudioSource.PlayOneShot(AudioClip);

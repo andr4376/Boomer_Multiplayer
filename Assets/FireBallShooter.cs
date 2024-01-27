@@ -44,7 +44,9 @@ public class FireBallShooter : NetworkBehaviour
     private void SpawnFireBall(Vector3 position, Quaternion rotation)
     {
         var fireball = Instantiate(FireballProjectilePrefab, position, rotation);
-        fireball.GetComponent<FireBallScript>().AudioSource = this.AudioSource;
+        var fireBallScript = fireball.GetComponent<FireBallScript>();
+        fireBallScript.AudioSource = this.AudioSource;
+        fireBallScript.Shooter = this;
         AudioSource.PlayOneShot(AudioClip);
     }
 }
