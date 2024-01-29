@@ -120,6 +120,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 1713139369628198534}
   characterController: {fileID: 4007193773663068517}
+  playerInputListener: {fileID: -7657958418466575921}
 --- !u!114 &5009214126745389516
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -187,7 +188,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 1682618559
+  GlobalObjectIdHash: 3694498358
   InScenePlacedSourceGlobalObjectIdHash: 1608105310
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
@@ -257,6 +258,9 @@ MonoBehaviour:
   - {fileID: -7657958418466575921}
   - {fileID: -886156691595995585}
   - {fileID: 8543182085138396663}
+  meshRenderersToDisable:
+  - {fileID: 1442816343970977960}
+  - {fileID: 7201938377475062018}
 --- !u!114 &-7657958418466575921
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -553,7 +557,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2212031492464046654
 Transform:
   m_ObjectHideFlags: 0
@@ -817,9 +821,45 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8391222552659086748, guid: 69aca19f31e38b344a387e51bf344654, type: 3}
+      propertyPath: m_Name
+      value: uppertorso
+      objectReference: {fileID: 0}
+    - target: {fileID: -7640558969779515294, guid: 69aca19f31e38b344a387e51bf344654, type: 3}
+      propertyPath: m_Name
+      value: head
+      objectReference: {fileID: 0}
+    - target: {fileID: -7146521406498821007, guid: 69aca19f31e38b344a387e51bf344654, type: 3}
+      propertyPath: m_Name
+      value: belly
+      objectReference: {fileID: 0}
+    - target: {fileID: -516098083770646512, guid: 69aca19f31e38b344a387e51bf344654, type: 3}
+      propertyPath: m_Name
+      value: rightshoulder
+      objectReference: {fileID: 0}
+    - target: {fileID: 808018515594663386, guid: 69aca19f31e38b344a387e51bf344654, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -87.94813
+      objectReference: {fileID: 0}
+    - target: {fileID: 808018515594663386, guid: 69aca19f31e38b344a387e51bf344654, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -13.313889
+      objectReference: {fileID: 0}
+    - target: {fileID: 808018515594663386, guid: 69aca19f31e38b344a387e51bf344654, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -46.22709
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 69aca19f31e38b344a387e51bf344654, type: 3}
       propertyPath: m_Name
       value: KNIGHT
+      objectReference: {fileID: 0}
+    - target: {fileID: 6014503084441653313, guid: 69aca19f31e38b344a387e51bf344654, type: 3}
+      propertyPath: m_Name
+      value: beard
+      objectReference: {fileID: 0}
+    - target: {fileID: 8416272007918961125, guid: 69aca19f31e38b344a387e51bf344654, type: 3}
+      propertyPath: m_Name
+      value: rightarm
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -829,9 +869,19 @@ PrefabInstance:
       addedObject: {fileID: 6404303058098140009}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 69aca19f31e38b344a387e51bf344654, type: 3}
+--- !u!137 &1442816343970977960 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -809828480950454423, guid: 69aca19f31e38b344a387e51bf344654, type: 3}
+  m_PrefabInstance: {fileID: 6973543216099405761}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4339904762882372809 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -2522736002115462392, guid: 69aca19f31e38b344a387e51bf344654, type: 3}
+  m_PrefabInstance: {fileID: 6973543216099405761}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &7201938377475062018 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 231210048726488771, guid: 69aca19f31e38b344a387e51bf344654, type: 3}
   m_PrefabInstance: {fileID: 6973543216099405761}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &7443810160697264170 stripped

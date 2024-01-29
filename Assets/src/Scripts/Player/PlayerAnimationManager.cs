@@ -5,12 +5,26 @@ public class PlayerAnimationManager : MonoBehaviour
 {
     public Animator animator;
     public CharacterController characterController;
-
+    public PlayerInputListener playerInputListener;
     const string IDLE = "PlayerIdle";
     const string RUN = "PlayerRun";
     const string JUMP = "PlayerJump";
+    const string ATTACK = "knightAttack";
 
-    private void FixedUpdate()
+    private void Awake()
+    {
+        playerInputListener.onShootInputDown += PlayAttack;
+    }
+    private void OnDestroy()
+    {
+
+    }
+    void PlayAttack()
+    {
+        PlayAnimation(ATTACK, 1);
+    }
+
+    private void Update()
     {
         if (characterController.isGrounded == false)
         {
@@ -28,12 +42,11 @@ public class PlayerAnimationManager : MonoBehaviour
     }
 
     string currentAnimation = IDLE;
-    void PlayAnimation(string animName)
+    void PlayAnimation(string animName, int layer = 0)
     {
-
         if (currentAnimation == animName)
             return;
         currentAnimation = animName;
-        animator.CrossFade(animName, 0.1f, 0);
+        animator.CrossFade(animName, 0.1f, layer);
     }
 }
