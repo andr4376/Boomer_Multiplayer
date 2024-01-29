@@ -187,7 +187,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 3869311091
+  GlobalObjectIdHash: 1682618559
   InScenePlacedSourceGlobalObjectIdHash: 1608105310
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
@@ -471,7 +471,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1a4c69f7a9d3ea43907b5765229dc85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _TextureWarpingFactor: 1
+  _TextureWarpingFactor: 0.2
   _TextureWarpingMode: 0
   _VertexGridResolution: 50
   _VertexWobbleMode: 1
