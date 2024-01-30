@@ -188,7 +188,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 3694498358
+  GlobalObjectIdHash: 1864415038
   InScenePlacedSourceGlobalObjectIdHash: 1608105310
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
@@ -261,6 +261,7 @@ MonoBehaviour:
   meshRenderersToDisable:
   - {fileID: 1442816343970977960}
   - {fileID: 7201938377475062018}
+  - {fileID: 1447758934983879263}
 --- !u!114 &-7657958418466575921
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -314,10 +315,10 @@ MonoBehaviour:
   movement: {x: 0, y: 0, z: 0}
   _playerStance: 0
   slopeFallingSpeed: 15
-  Speed: 5
+  Speed: 2.3
   CrouchSpeedFactor: 0.5
   SprintSpeedFactor: 1.4
-  JumpForce: 3
+  JumpForce: 1.5
 --- !u!136 &4265027474329050410
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -409,7 +410,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.1
+  near clip plane: 0.01
   far clip plane: 60
   field of view: 80
   orthographic: 0
@@ -477,7 +478,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _TextureWarpingFactor: 0.2
   _TextureWarpingMode: 0
-  _VertexGridResolution: 50
+  _VertexGridResolution: 45
   _VertexWobbleMode: 1
   _UseRetroVertexLighting: 1
   _RetroLightingNormalFactor: 0.5
@@ -497,12 +498,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 433faa8b758afed4f9295b193c697276, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _PixelationFactor: 0.75
+  _PixelationFactor: 0.4
   _ColorEmulationMode: 2
   _FullscreenColorDepth: {x: 256, y: 256, z: 256}
   _FullscreenDitherDepth: {x: 32, y: 32, z: 32}
   _DitheringMatrixSize: 2
-  _DitheringScale: 0.9
+  _DitheringScale: 0.8
   _InterlacingSize: 1
   _PostProcessShader: {fileID: 4800000, guid: 56d52fd5b7c6911468179e5a7359ce0e, type: 3}
   _PostProcessShaderAccurate: {fileID: 4800000, guid: 2ebed186567d3c244a87538744a62920, type: 3}
@@ -872,6 +873,11 @@ PrefabInstance:
 --- !u!137 &1442816343970977960 stripped
 SkinnedMeshRenderer:
   m_CorrespondingSourceObject: {fileID: -809828480950454423, guid: 69aca19f31e38b344a387e51bf344654, type: 3}
+  m_PrefabInstance: {fileID: 6973543216099405761}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &1447758934983879263 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 8417361359673230750, guid: 69aca19f31e38b344a387e51bf344654, type: 3}
   m_PrefabInstance: {fileID: 6973543216099405761}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &4339904762882372809 stripped

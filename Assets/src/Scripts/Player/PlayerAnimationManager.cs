@@ -7,8 +7,8 @@ public class PlayerAnimationManager : MonoBehaviour
     public CharacterController characterController;
     public PlayerInputListener playerInputListener;
     const string IDLE = "PlayerIdle";
-    const string RUN = "PlayerRun";
-    const string JUMP = "PlayerJump";
+    const string RUN = "knightWalk";
+    const string JUMP = "knightJump";
     const string ATTACK = "knightAttack";
 
     private void Awake()
