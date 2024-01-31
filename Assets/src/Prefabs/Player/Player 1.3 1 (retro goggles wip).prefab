@@ -188,7 +188,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 1864415038
+  GlobalObjectIdHash: 2786410243
   InScenePlacedSourceGlobalObjectIdHash: 1608105310
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
@@ -478,7 +478,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _TextureWarpingFactor: 0.2
   _TextureWarpingMode: 0
-  _VertexGridResolution: 45
+  _VertexGridResolution: 60
   _VertexWobbleMode: 1
   _UseRetroVertexLighting: 1
   _RetroLightingNormalFactor: 0.5
@@ -498,7 +498,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 433faa8b758afed4f9295b193c697276, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _PixelationFactor: 0.4
+  _PixelationFactor: 0.6
   _ColorEmulationMode: 2
   _FullscreenColorDepth: {x: 256, y: 256, z: 256}
   _FullscreenDitherDepth: {x: 32, y: 32, z: 32}
