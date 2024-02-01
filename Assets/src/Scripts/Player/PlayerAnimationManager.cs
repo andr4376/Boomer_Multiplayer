@@ -47,6 +47,6 @@ public class PlayerAnimationManager : MonoBehaviour
         if (currentAnimation == animName)
             return;
         currentAnimation = animName;
-        animator.CrossFade(animName, 0.1f, layer);
+        animator.CrossFade(animName, 0.05f, layer);
     }
 }
