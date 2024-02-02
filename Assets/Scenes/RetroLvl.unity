@@ -1070,6 +1070,10 @@ PrefabInstance:
       propertyPath: NetworkConfig.TickRate
       value: 30
       objectReference: {fileID: 0}
+    - target: {fileID: 8620784982923231004, guid: 21b51dbef48af7247aa97d09dfaa330c, type: 3}
+      propertyPath: NetworkConfig.PlayerPrefab
+      value: 
+      objectReference: {fileID: 1772109704524328437, guid: 858e8c99164031341ab75b06756e5a74, type: 3}
     - target: {fileID: 9153383489357017646, guid: 21b51dbef48af7247aa97d09dfaa330c, type: 3}
       propertyPath: m_Name
       value: network manager
