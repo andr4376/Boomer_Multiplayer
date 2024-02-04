@@ -7,6 +7,8 @@ public class PlayerAttackController : NetworkBehaviour
     public PlayerAnimationManager animationManager;
     PlayerInputListener playerInputListener;
 
+    public AudioSource playerAudioSource;
+
     public float AttackCooldown = 1;
     float attackTs = 0;
     private void Awake()
@@ -31,6 +33,8 @@ public class PlayerAttackController : NetworkBehaviour
 
         animationManager.PlayAttack();
         Invoke(nameof(ApplyDamageServerRpc), 0.35f);
+
+        playerAudioSource.Play();
     }
 
     private void OnDrawGizmos()

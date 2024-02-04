@@ -8,6 +8,8 @@ public class KillableScript : NetworkBehaviour
     // Define a NetworkVariable to keep track of health
     public NetworkVariable<int> health = new NetworkVariable<int>(MaxHealth, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Server);
 
+    public AudioSource AudioSource;
+
     // Set initial health
     public void Awake()
     {
@@ -39,6 +41,12 @@ public class KillableScript : NetworkBehaviour
     {
         if (newValue <= 0)
             Die();
+        Debug.Log("previous"+previousValue);
+        Debug.Log("new"+newValue);
+        if(previousValue > newValue)
+        {
+            AudioSource.Play();
+        }
     }
 
     // Method to handle character death

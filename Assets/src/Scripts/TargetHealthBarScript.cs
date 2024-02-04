@@ -8,6 +8,7 @@ public class TargetHealthBarScript : MonoBehaviour
 {
     private Slider slider;
     public TMP_Text text;
+    public AudioSource audioSource;
 
     public CanvasGroup UI;
 
@@ -28,10 +29,12 @@ public class TargetHealthBarScript : MonoBehaviour
     internal void Hide()
     {
         UI.alpha = 0;
+        audioSource.Stop();
     }
 
     internal void Show()
     {
         UI.alpha = 1;
+        audioSource.Play();
     }
 }
