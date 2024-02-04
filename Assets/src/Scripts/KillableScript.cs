@@ -1,10 +1,9 @@
-using System;
 using Unity.Netcode;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class KillableScript : NetworkBehaviour
 {
+    public string killablename = "UNKOWN";
     public const int MaxHealth = 100;
     // Define a NetworkVariable to keep track of health
     public NetworkVariable<int> health = new NetworkVariable<int>(MaxHealth, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Server);
@@ -24,11 +23,17 @@ public class KillableScript : NetworkBehaviour
         base.OnDestroy();
     }
 
-    private void FixedUpdate()
+    public override void OnNetworkSpawn()
     {
-        if(IsOwner)
-        Debug.Log(health.Value);
+        base.OnNetworkSpawn();
+        this.killablename = "Player #"+this.NetworkObjectId.ToString();
     }
+
+    //private void FixedUpdate()
+    //{
+    //    if(IsOwner)
+    //    Debug.Log(health.Value);
+    //}
 
     private void HealthChanged(int previousValue, int newValue)
     {

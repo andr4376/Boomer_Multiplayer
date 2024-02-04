@@ -28,7 +28,6 @@ public class PlayerAnimationManager : NetworkBehaviour
         if (characterController.isGrounded == false)
         {
             //jump
-            Debug.Log("jumping");
             PlayAnimation(JUMP);
             return;
         }
