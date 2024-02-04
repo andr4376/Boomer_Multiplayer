@@ -117,9 +117,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad2e94bbe8efabd43a89262748e95111, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 1713139369628198534}
   characterController: {fileID: 4007193773663068517}
-  playerInputListener: {fileID: -7657958418466575921}
 --- !u!114 &5009214126745389516
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -152,6 +150,7 @@ GameObject:
   - component: {fileID: -886156691595995585}
   - component: {fileID: 4265027474329050410}
   - component: {fileID: 8817701735702648827}
+  - component: {fileID: 8138498275732792680}
   m_Layer: 0
   m_Name: Player 1.4
   m_TagString: Player
@@ -188,7 +187,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 3517791630
+  GlobalObjectIdHash: 4082847866
   InScenePlacedSourceGlobalObjectIdHash: 4091572925
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
@@ -258,6 +257,7 @@ MonoBehaviour:
   - {fileID: -7657958418466575921}
   - {fileID: -886156691595995585}
   - {fileID: 8543182085138396663}
+  - {fileID: 8138498275732792680}
   meshRenderersToDisable:
   - {fileID: 1442816343970977960}
   - {fileID: 7201938377475062018}
@@ -354,6 +354,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a1a1dd045f811849aacec023bfc4cd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health:
+    m_InternalValue: 100
+--- !u!114 &8138498275732792680
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1772109704524328437}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70ca22477fedab844896b149eeec7f3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animationManager: {fileID: 8543182085138396663}
+  AttackCooldown: 1
 --- !u!1 &2004268654462551047
 GameObject:
   m_ObjectHideFlags: 0

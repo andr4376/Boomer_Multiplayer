@@ -1,12 +1,13 @@
 using System;
 using Unity.Netcode;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class KillableScript : NetworkBehaviour
 {
     public const int MaxHealth = 100;
     // Define a NetworkVariable to keep track of health
-    private NetworkVariable<int> health = new NetworkVariable<int>(MaxHealth, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Server);
+    public NetworkVariable<int> health = new NetworkVariable<int>(MaxHealth, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Server);
 
     // Set initial health
     public void Awake()
@@ -17,11 +18,10 @@ public class KillableScript : NetworkBehaviour
         }
         health.OnValueChanged += HealthChanged;
     }
-
-    private void HealthChanged(int previousValue, int newValue)
+    public override void OnDestroy()
     {
-        if (newValue <= 0)
-            Die();
+        health.OnValueChanged -= HealthChanged;
+        base.OnDestroy();
     }
 
     private void FixedUpdate()
@@ -30,15 +30,10 @@ public class KillableScript : NetworkBehaviour
         Debug.Log(health.Value);
     }
 
-    public void TakeDamage(int damage)
+    private void HealthChanged(int previousValue, int newValue)
     {
-        ApplyDamage(damage);
-    }
-
-    // Method to handle damage
-    private void ApplyDamage(int damage)
-    {
-        health.Value -= damage;
+        if (newValue <= 0)
+            Die();
     }
 
     // Method to handle character death
@@ -46,5 +41,26 @@ public class KillableScript : NetworkBehaviour
     {
         // Implement your character death logic here
         Debug.Log("Character died id:"+this.NetworkObjectId);
+
+        if (IsOwner)
+        {
+            RespawnServerRpc();
+        }
     }
+
+    [ServerRpc]
+    void RespawnServerRpc()
+    {
+        this.health.Value = MaxHealth;
+        RespawnClientRpc();
+    }
+
+    [ClientRpc]
+    void RespawnClientRpc()
+    {
+        //respawn use a game manager
+        //    https://forum.unity.com/threads/respawning-problem-with-unity-netcode.1479501/
+        this.transform.position = Vector3.up * 50;
+    }
+
 }
