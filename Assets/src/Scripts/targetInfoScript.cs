@@ -12,8 +12,23 @@ public class targetInfoScript : MonoBehaviour
         this.targetHealthBarScript.Hide();
     }
 
+    bool _enableTargeting = false;
+
+    private void Awake()
+    {
+        Task.Run(async () =>
+        {
+            await Task.Delay(3000);
+            _enableTargeting = true;
+        });
+    }
+
+
     private void FixedUpdate()
     {
+        if (_enableTargeting == false)
+            return;
+
         if (target is not null)
             return;
             
@@ -70,11 +85,5 @@ public class targetInfoScript : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.DrawSphere(transform.position + Vector3.up + transform.forward * 4, 10);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 }
